@@ -1,10 +1,11 @@
 "use client"
 
 import { Star, MapPin, Phone, BookOpen, Globe } from "lucide-react"
+import Link from "next/link"
 
 export default function ProfessionalCard({ professional }) {
-  const { user, details = {}, consultation_fee, average_rating, total_reviews, total_sessions, status, bio, category } = professional
-
+  const { user, details = {}, consultation_fee, average_rating, total_reviews, total_sessions, status, bio, category,id } = professional
+  //console.log(professional)
   // Fallbacks
   const specialization = details.specialization || category
   const degrees = details.degrees || []
@@ -114,9 +115,11 @@ export default function ProfessionalCard({ professional }) {
               <p className="text-xs text-muted-foreground">Consultation Fee</p>
               <p className="text-lg font-bold text-primary">${Number.parseFloat(consultation_fee).toFixed(2)}</p>
             </div>
+            <Link href = {`/profile/${category}/${specialization}/${id}`}>  
             <button className="bg-primary text-primary-foreground px-4 py-2 rounded-lg font-medium text-sm hover:bg-primary/90 transition-colors">
               View Profile
             </button>
+            </Link>
           </div>
         )}
       </div>
